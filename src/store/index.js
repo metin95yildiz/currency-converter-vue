@@ -29,7 +29,7 @@ actions: {
         const rates = response.data["rates"];
         const firstValue = rates[firstCurrency];
         const secondValue = rates[secondCurrency];
-        const result = (secondValue / firstValue) * amount;
+        const result = parseFloat((secondValue / firstValue) * amount).toFixed(2);
         const currencyInfo = {
             "firstCurrency": firstCurrency,
             "secondCurrency": secondCurrency,

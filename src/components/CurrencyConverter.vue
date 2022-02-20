@@ -40,14 +40,14 @@
                     <h4>Results</h4>
                     <div class="form-group">
                         <span class="input-group-text justify-content-center my-4">
-                            {{getCurrencyInfo.amount}} {{getCurrencyInfo.firstCurrency}}
+                            From: {{getCurrencyInfo.amount}} {{getCurrencyInfo.firstCurrency}}
                         </span>
                         <div class="form-control my-4" id="result">
-                            {{getCurrencyInfo.result}} - {{getCurrencyInfo.secondCurrency}}
+                            To: {{getCurrencyInfo.result}} - {{getCurrencyInfo.secondCurrency}}
                         </div>
                     </div>
                 </div>
-                <div v-else-if="isThereError">Please check currencies and amount...</div>
+                <div class="alert alert-danger" v-else-if="isThereError">Please check currencies...</div>
                 <div class="alert alert-warning" v-else>Choose currencies and determine amount to convert...</div>
             </transition>
         </div>
@@ -89,14 +89,15 @@ export default {
   },
   methods: {
       convert() {
-          !this.firstCurrency || !this.secondCurrency || !this.amount ?
+          !this.firstCurrency || !this.secondCurrency ?
             this.isThereError = true
-          :
-          this.$store.dispatch("convert", {
-              firstCurrency: this.firstCurrency,
-              secondCurrency: this.secondCurrency,
-              amount: this.amount })
-            this.isThereError = false;
+          :(
+            this.$store.dispatch("convert", {
+                firstCurrency: this.firstCurrency,
+                secondCurrency: this.secondCurrency,
+                amount: this.amount }),
+            this.isThereError = false
+          )
       }
   },
   computed: {
@@ -108,6 +109,7 @@ export default {
 
 <style scoped>
 .card {
+    height: auto;
     transition: height 1s;
 }
 .fade-enter {

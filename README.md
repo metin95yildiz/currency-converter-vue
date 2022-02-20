@@ -1,6 +1,6 @@
 # currency-converter-vue3
 This is simple currency converter app. Used Fixer.io for currency API.
-If you want to know about Fixer.io, click <a href="https://fixer.io/" target="_blank">here</a>.
+If you want to know about Fixer.io, click [here](https://fixer.io/).
 
 ## Used Dependencies 
 
